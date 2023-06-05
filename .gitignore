@@ -14,6 +14,7 @@ dist/
 downloads/
 eggs/
 records/
+records.zip
 .eggs/
 lib/
 lib64/
