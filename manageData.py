@@ -9,7 +9,7 @@ from sklearn.preprocessing import StandardScaler
 os.chdir('/Users/ludo/Documents/src/AI4Health')
 # s=glob.glob("*/follow_traj.txt"),glob.glob("*/*/follow_traj.txt"),,glob.glob("*/*/*/follow_traj.txt")
 # ,glob.glob("*/*/*/follow_traj.txt"),glob.glob("*/*/follow_traj.txt"), ]
-s = [[file for file in glob.glob("*/follow_traj.txt")]]
+s = [[file for file in glob.glob("*/*/*/follow_traj.txt")]]
 # s=[[file for file in glob.glob("*/*/*/follow_traj.txt")]]
 filtering_data = ['records/test1/traj/follow_traj.txt',
                   'records/BO2504/test/follow_traj.txt',
@@ -32,8 +32,8 @@ for sub_s in s:
         flats.append(item)
 print(flats)
 
-df = pd.read_csv(flats[0], sep='\s+', header=None)
-df['file'] = pd.Series([flats[0] for i in df[0]])
+df = pd.read_csv(flats[1], sep='\s+', header=None)
+df['file'] = pd.Series([flats[1] for i in df[0]])
 
 for ff in flats[1:]:
     dftmp = []
