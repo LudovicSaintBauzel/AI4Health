@@ -16,8 +16,6 @@ fichiers_csv = [[file for file in glob.glob("*/*/*/follow_traj.txt")]]
 # Liste pour stocker les données de tous les fichiers
 donnees = []
 
-# Sélection des colonnes à retirer (première colonne et colonne numéro 20)
-colonnes_a_retirer = [0, 20]
 
 filtering_data = ['records/test1/traj/follow_traj.txt',
                   'records/BO2504/test/follow_traj.txt',
@@ -41,8 +39,6 @@ for fichier_csv in fichiers_csv[0]:
     fd_stat = os.stat(fichier_csv)
     if (fd_stat.st_size != 0) and (fichier_csv not in filtering_data):
         data = pd.read_csv(fichier_csv, sep='\s+', header=None)
-        # Supprimer les colonnes sélectionnées
-        data = data.drop(data.columns[colonnes_a_retirer], axis=1)
         donnees.append(data)
 
 # Concaténer toutes les données en un seul DataFrame
@@ -59,7 +55,7 @@ donnees_combinees = donnees_combinees.dropna()
 
 # Diviser les données en features et labels
 X = donnees_combinees.iloc[:, 4:9].values
-y = donnees_combinees.iloc[:, 19].values
+y = donnees_combinees.iloc[:, 18].values
 
 # Diviser les données en ensembles d'entraînement et de test
 X_train, X_test, y_train, y_test = train_test_split(
