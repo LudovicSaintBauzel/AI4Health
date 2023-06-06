@@ -165,4 +165,4 @@ kagglecatanddogs_5340.zip
 kagglecatanddogs_5340/
 PetImages/
 CDLA-Permissive-2.0.pdf
-save*.keras
+*.keras
